@@ -1,15 +1,26 @@
 # Install-NVCPL
-A simple PowerShell script to install the NVIDIA Control Panel as an UWP or a Win32 App!
+A simple PowerShell script to install the NVIDIA Control Panel as a Win32 App!
 
 ## Usage
-Use the following command to run the script:
+Run the packaged installer as an Administrator:
 ```ps
-irm "https://raw.githubusercontent.com/Aetopia/Install-NVCPL/main/Install-NVCPL.ps1" | iex
+.\Install-NVCPL.exe
 ```
 
-## Build NVIDIA Control Panel Service Launcher 
+Or run the script directly after keeping `Install-NVCPL.ps1` and `nvcpluir.dll` in the same folder:
+```ps
+.\Install-NVCPL.ps1
+```
+
+## Build Single EXE
+The packaged EXE embeds `Install-NVCPL.ps1` and `nvcpluir.dll`:
+```ps
+.\build-exe.ps1
+```
+
+## Build NVIDIA Control Panel Service Launcher
+The repository includes a prebuilt `nvcpluir.dll`. To rebuild it:
+
 1. Install `GCC` and [`UPX`](https://upx.github.io/).
 2. Run `build.bat`.
-3. Now simply extract a NVIDIA Control Panel APPX package as a `.zip` archive.              
-4. Replace `nvcpluir.dll` in `Display.Driver\NVCPL` within the extracted `.zip` file directory.
-5. Run `nvcplui.exe` as an Administrator to launch the NVIDIA Control Panel.
+3. Keep the generated `nvcpluir.dll` beside `Install-NVCPL.ps1`.
